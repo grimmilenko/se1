@@ -3,29 +3,30 @@ package test;
 import boundaryclasses.IGate;
 
 public class GateStub implements IGate {
+	boolean gateClosed = false;
 
 	@Override
 	public void sendCloseGate() {
-		// TODO Auto-generated method stub
+		System.out.println("Gate is closing...");
+		gateClosed = true;
 
 	}
 
 	@Override
 	public void sendOpenGate() {
-		// TODO Auto-generated method stub
+		System.out.println("Gate is opening...");
+		gateClosed = false;
 
 	}
 
 	@Override
 	public boolean receivedGateClosed() {
-		// TODO Auto-generated method stub
-		return false;
+		return gateClosed;
 	}
 
 	@Override
 	public boolean receivedGateOpen() {
-		// TODO Auto-generated method stub
-		return false;
+		return !gateClosed;
 	}
 
 }

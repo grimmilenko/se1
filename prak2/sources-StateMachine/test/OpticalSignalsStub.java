@@ -6,26 +6,22 @@ public class OpticalSignalsStub implements IOpticalSignals {
 
 	@Override
 	public void switchLampAOn() {
-		// TODO Auto-generated method stub
-
+		System.out.println("Light A on...");
 	}
 
 	@Override
 	public void switchLampAOff() {
-		// TODO Auto-generated method stub
-
+		System.out.println("Light A off...");
 	}
 
 	@Override
 	public void switchLampBOn() {
-		// TODO Auto-generated method stub
-
+		System.out.println("Light B on...");
 	}
 
 	@Override
 	public void switchLampBOff() {
-		// TODO Auto-generated method stub
-
+		System.out.println("Light B off...");
 	}
 
 }

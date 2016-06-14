@@ -1,4 +1,5 @@
 package test;
+
 /**
  * Test Framework for testing the FSM from Practice 3
  * @author Thomas Lehmann
@@ -12,13 +13,6 @@ import implementation.FSMState;
 import org.junit.Before;
 import org.junit.Test;
 
-import boundaryclasses.IGate;
-import boundaryclasses.IHumidifier;
-import boundaryclasses.IHumiditySensor;
-import boundaryclasses.IManualControl;
-import boundaryclasses.IOpticalSignals;
-import boundaryclasses.IPump;
-
 public class FSMImplementationTest {
 	private PumpStub pumpA;
 	private PumpStub pumpB;
@@ -30,7 +24,7 @@ public class FSMImplementationTest {
 	private IFSM uut;
 
 	@Before
-	public void testSetup(){
+	public void testSetup() {
 		pumpA = new PumpStub();
 		pumpB = new PumpStub();
 		gate = new GateStub();
@@ -38,12 +32,19 @@ public class FSMImplementationTest {
 		sensor = new HumiditySensorStub();
 		humidifier = new HumidifierStub();
 		operatorPanel = new ManualControlStub();
-		uut = new FSMImplementation(  pumpA,  pumpB,  gate,  signals,
-				humidifier,  sensor,  operatorPanel) ;
+		uut = new FSMImplementation(pumpA, pumpB, gate, signals, humidifier, sensor, operatorPanel);
 	}
-	
+
 	@Test
 	public void testPath() {
+		uut.evaluate(50, 0);
+		assertEquals(uut.getState(), FSMState.HumidityOkay);
+		uut.evaluate(80, 0);
+		assertEquals(uut.getState(), FSMState.HumidityOkay);
+		uut.evaluate(10, 0);
+		assertEquals(uut.getState(), FSMState.HumidityOkay);
+		uut.evaluate(80, 10000);
+		assertEquals(uut.getState(), FSMState.ERROR);
 
 	}
 

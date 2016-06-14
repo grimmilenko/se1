@@ -3,17 +3,25 @@ package test;
 import boundaryclasses.IHumidifier;
 
 public class HumidifierStub implements IHumidifier {
+	boolean sprayOn = false;
 
 	@Override
 	public void sendSprayOn() {
-		// TODO Auto-generated method stub
+		sprayOn = true;
+		System.out.println("Spray on");
 
 	}
 
 	@Override
 	public void sendSprayOff() {
-		// TODO Auto-generated method stub
+		sprayOn = false;
+		System.out.println("Spray off");
 
+	}
+
+	@Override
+	public boolean isSprayOn() {
+		return sprayOn;
 	}
 
 }

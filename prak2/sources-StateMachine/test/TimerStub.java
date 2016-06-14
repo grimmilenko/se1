@@ -1,19 +1,20 @@
 package test;
 
-import fsm.ITimer;
+import boundaryclasses.ITimer;
 
 public class TimerStub implements ITimer {
+	private long timeStart;
+	private double s;
 
 	@Override
 	public void startTime(double seconds) {
-		// TODO Auto-generated method stub
-
+		timeStart = System.currentTimeMillis();
+		s = seconds * 1000;
 	}
 
 	@Override
 	public boolean isTimerExpired() {
-		// TODO Auto-generated method stub
-		return false;
+		return (System.currentTimeMillis() - timeStart >= s) ? true : false;
 	}
 
 }
